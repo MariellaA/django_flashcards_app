@@ -1,0 +1,15 @@
+{% extends "cards/base.html" %}
+{% load humanize %}
+
+{% block content %}
+    <h2>
+        All Cards
+    </h2>
+    {% for card in card_list %}  <!-- looping through all your cards -->
+        {% ifchanged %}     <!-- showing the box number once, then all the cards in the box. Only when the next box is
+        reached and the headline changes is the new headline shown. -->
+        <h3> {{ card.box | ordinal }} Box</h3>  <!--  using the pipe symbol (|) to apply the ordinal filter of the humanize filter set -->
+        {% endifchanged %}
+        {% include "cards/card.html" %}  <!-- load a subtemplate named card.html -->
+    {% endfor %}
+{% endblock content%}
