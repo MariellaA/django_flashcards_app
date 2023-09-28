@@ -5,6 +5,9 @@
     <h2>
         All Cards
     </h2>
+    <a href="{% url 'card-create' %}" role="button">
+        Create New Card
+    </a>
     {% for card in card_list %}  <!-- looping through all your cards -->
         {% ifchanged %}     <!-- showing the box number once, then all the cards in the box. Only when the next box is
         reached and the headline changes is the new headline shown. -->

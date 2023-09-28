@@ -1,0 +1,22 @@
+{% extends "cards/base.html" %}
+
+{% block content %}
+<!-- If the card_form.html template receives card data, then the Edit Card headline is shown.
+Otherwise, the Create New Card is displayed. -->
+    {% if card %}
+        <h2>Edit Card</h2>
+    {% else %}
+        <h2>Create New Card</h2>
+    {% endif %}
+    <form method="post">
+        <!-- Whenever content is posted in Django forms, a {% csrf_token %} template tag must also be provided.
+        This is a security measure to prevent cross-site request forgery. -->
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Django will display the form fields wrapped in paragraphs -->
+        <input type="submit" value="Save Card">
+    </form>
+    <!-- option to cancel the creation of a new card. The Cancel link redirects to the card-list URL, discarding the form data -->
+    <a href="{% url 'card-list' %}">
+        Cancel
+    </a>
+{% endblock %}

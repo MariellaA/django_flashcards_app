@@ -12,4 +12,15 @@ urlpatterns = [
         views.CardListView.as_view(),
         name="card-list"     # with the name attribute, views can be referenced more conveniently
     ),
+    path(
+        "new",
+        views.CardCreateView.as_view(),
+        name="card-create"
+    ),
+    path(
+        "edit/<int:pk>", # Since an existing card is being edited, a primary key (pk) is needed to identify which card
+        # to update
+        views.CardUpdateView.as_view(),
+        name="card-update"
+    )
 ]
