@@ -1,0 +1,1 @@
+# django_flashcards_app
