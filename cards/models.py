@@ -29,3 +29,4 @@ class Card(models.Model):  # The Card model defines that the database should con
 
     def __str__(self):  # Used to control the string representation of the Card objects
         return self.question
+

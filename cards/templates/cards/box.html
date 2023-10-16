@@ -1,0 +1,17 @@
+{% extends "cards/base.html" %}
+{% load humanize %} <!-- using humanize again to show the box number as an ordinal number-->
+
+{% block content %}
+    <h2>🗃 {{ box_number | ordinal }} Box</h2>
+    <!-- The object_list variable contains the cards as objects -->
+    <!-- using two more filters on object_list below. 1. length filter to show the number of cards that are currently
+    in the box.; 2. pluralize filter, to ensure the grammatical correctness of the message. If there is only one card
+    left, then the word Card stays singular. But when there are either more or zero cards, then Django pluralizes the
+    word Card by adding an s at the end.-->
+    <mark>{{ object_list | length }}</mark> Card{{ object_list | pluralize }} left in box.
+    <hr>
+    <!-- loop through the cards of the box and show them by including the card.html template -->
+    {% for card in object_list %}
+        {% include "cards/card.html" %}
+    {% endfor %}
+{% endblock content %}
